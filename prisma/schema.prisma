@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/db/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  password    String
+  isAdmin     Boolean
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+enum PokemonType {
+  Grass
+  Fire
+  Water
+  Lightning
+  Fighting
+  Psychic
+  Colorless
+  Darkness
+  Metal
+  Dragon
+  Fairy
+}
+
+model Pokemon {
+  id                  Int @id @default(autoincrement())
+  name                String
+  image               String?
+  type                String
+  hp                  Int
+  weaknessType        String
+  weaknessDamage      Int
+  resistanceType      String
+  resistanceQuantity  Int
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+}
