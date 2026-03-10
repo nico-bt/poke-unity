@@ -1,5 +1,8 @@
+import DeleteCardBtn from "@/components/DeleteCardBtn";
 import { PokemonGridSkeleton } from "@/components/PokemonGridSkeleton";
 import prisma from "@/lib/prisma";
+import { verifySession } from "@/lib/session";
+import Image from "next/image";
 import { Suspense } from "react";
 
 export default async function Home() {
@@ -13,13 +16,18 @@ export default async function Home() {
 }
 
 async function PokemonGrid() {
-  const cards = await prisma.pokemon.findMany({});
+  const [cards, session] = await Promise.all([
+    prisma.pokemon.findMany({}),
+    verifySession(),
+  ]);
+
+  const { isAdmin } = session;
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5 sm:gap-6 md:gap-7 mx-2 my-6">
       {cards.map((card) => (
         <div key={card.id} className="relative">
-          <img
+          <Image
             src={card.image || "/no-image.jpg"}
             alt={card.name}
             height={742}
@@ -37,6 +45,8 @@ async function PokemonGrid() {
               </div>
             </div>
           )}
+
+          {isAdmin && <DeleteCardBtn cardId={card.id} image={card.image} />}
         </div>
       ))}
     </div>

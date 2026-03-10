@@ -1,7 +1,7 @@
 "use server";
 
 import { PokemonType } from "@/db/generated/prisma/enums";
-import { createPokemonCard } from "@/lib/Pokemon";
+import { createPokemonCard, deletePokemonById } from "@/lib/Pokemon";
 import {
   PokemonCardFormFieldsSchema,
   pokemonCardFormFieldsSchemma,
@@ -64,5 +64,17 @@ export async function addCard(
       },
       data: result.data,
     };
+  }
+}
+
+export async function deletePokemonCardById(id: number) {
+  try {
+    await deletePokemonById(id);
+
+    revalidatePath("/", "layout");
+    return { success: true, error: "" };
+  } catch (error) {
+    console.error("Error deleting patient:", error);
+    return { success: false, error: "Failed to delete card. Please try again" };
   }
 }

@@ -1,4 +1,3 @@
-import { deleteImage } from "@/supabase/storage/client";
 import { PokemonCardFormFieldsSchema } from "@/utils/zodSchema";
 import prisma from "./prisma";
 

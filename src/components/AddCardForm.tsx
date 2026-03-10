@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { FileImgInput } from "./FileImgInput";
 import { actions } from "@/actions";
 import { PokemonType } from "@/db/generated/prisma/enums";
+import { Loader2 } from "lucide-react";
 
 export const AddCardForm = () => {
   const router = useRouter();
@@ -274,8 +275,8 @@ export const AddCardForm = () => {
 
       {/* Loading OVERLAY */}
       {isSubmitting && (
-        <div className="inset-0 grid place-items-center z-20 absolute bg-gray-800 opacity-90 rounded-xl">
-          <span className="text-red-500 font-bold text-3xl">Loading...</span>
+        <div className="inset-0 grid place-items-center z-20 absolute bg-gray-800 opacity-80 rounded-lg">
+          <Loader2 className="animate-spin text-red-600 h-12 w-12" />
         </div>
       )}
     </form>
