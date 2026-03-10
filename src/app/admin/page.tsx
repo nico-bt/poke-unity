@@ -1,5 +1,7 @@
+import { AddCardForm } from "@/components/AddCardForm";
+
 function AdminPage() {
-  return <div>Admin page</div>;
+  return <AddCardForm />;
 }
 
 export default AdminPage;
