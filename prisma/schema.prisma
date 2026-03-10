@@ -40,11 +40,12 @@ model Pokemon {
   id                  Int @id @default(autoincrement())
   name                String
   image               String?
-  type                String
+  type                PokemonType
   hp                  Int
-  weaknessType        String
+  attack              Int
+  weaknessType        PokemonType
   weaknessDamage      Int
-  resistanceType      String
+  resistanceType      PokemonType
   resistanceQuantity  Int
   created_at          DateTime @default(now())
   updated_at          DateTime @updatedAt
