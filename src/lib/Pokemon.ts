@@ -14,6 +14,10 @@ export async function getPokemonCards() {
   });
 }
 
+export async function findPokemonCardById(id: number) {
+  return prisma.pokemon.findUnique({ where: { id: Number(id) } });
+}
+
 export async function deletePokemonById(id: number) {
   return prisma.pokemon.delete({ where: { id } });
 }

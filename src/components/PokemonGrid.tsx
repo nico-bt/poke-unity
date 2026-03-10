@@ -1,11 +1,12 @@
 import DeleteCardBtn from "@/components/DeleteCardBtn";
-import prisma from "@/lib/prisma";
+import { getPokemonCards } from "@/lib/Pokemon";
 import { verifySession } from "@/lib/session";
 import Image from "next/image";
 import Link from "next/link";
+
 async function PokemonGrid() {
   const [cards, session] = await Promise.all([
-    prisma.pokemon.findMany({}),
+    getPokemonCards(),
     verifySession(),
   ]);
 
