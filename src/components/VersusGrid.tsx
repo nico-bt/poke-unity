@@ -4,6 +4,7 @@ import { Pokemon } from "@/db/generated/prisma/client";
 import Image from "next/image";
 import OponentCombobox from "@/components/OponentCombobox";
 import { useMemo, useState } from "react";
+import { AttackTableResult } from "./AttackTableResult";
 
 export const VersusGrid = ({
   pokemon,
@@ -22,7 +23,7 @@ export const VersusGrid = ({
   );
 
   return (
-    <div className="grid grid-cols-[1fr_75px_1fr] mt-4 gap-x-2 md:gap-x-10 px-4 gap-y-3">
+    <div className="grid grid-cols-[1fr_75px_1fr] mt-4 gap-2 px-4 mb-32">
       {/* Row 1 */}
       <div />
       <div />
@@ -35,7 +36,7 @@ export const VersusGrid = ({
       <Image
         height={1024}
         width={734}
-        className="mx-auto w-full max-w-[475px]"
+        className="mx-auto w-full max-w-111"
         src={pokemon.image || "/no-image.jpg"}
         alt={pokemon.name}
       />
@@ -48,10 +49,14 @@ export const VersusGrid = ({
         <Image
           height={1024}
           width={734}
-          className="mx-auto w-full max-w-[475px] object-cover"
+          className="mx-auto w-full max-w-111 object-cover"
           src={oponent.image || "/no-image.jpg"}
           alt={oponent.name}
         />
+      )}
+
+      {oponent && pokemon && (
+        <AttackTableResult pokemon={pokemon} oponent={oponent} />
       )}
     </div>
   );
