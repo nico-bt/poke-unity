@@ -8,13 +8,17 @@ export function AttackTableResult({
   pokemon: Pokemon;
   oponent: Pokemon;
 }) {
+  // Initial attack
   let attackModified = pokemon.attack;
 
-  if (pokemon.type === oponent.weaknessType) {
+  if (pokemon.type === oponent.weaknessType && oponent.weaknessDamage != null) {
     attackModified = attackModified * oponent.weaknessDamage;
   }
 
-  if (pokemon.type === oponent.resistanceType) {
+  if (
+    pokemon.type === oponent.resistanceType &&
+    oponent.resistanceQuantity != null
+  ) {
     attackModified = attackModified - oponent.resistanceQuantity;
   }
 

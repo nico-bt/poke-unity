@@ -43,10 +43,10 @@ model Pokemon {
   type                PokemonType
   hp                  Int
   attack              Int
-  weaknessType        PokemonType
-  weaknessDamage      Int
-  resistanceType      PokemonType
-  resistanceQuantity  Int
+  weaknessType        PokemonType?
+  weaknessDamage      Int?
+  resistanceType      PokemonType?
+  resistanceQuantity  Int?
   created_at          DateTime @default(now())
   updated_at          DateTime @updatedAt
 }

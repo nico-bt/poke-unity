@@ -1,6 +1,6 @@
 "use client";
 
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   PokemonCardFormFieldsSchema,
   pokemonCardFormFieldsSchemma,
@@ -37,11 +37,11 @@ export const AddCardForm = () => {
       resistanceType: "Colorless",
       resistanceQuantity: 0,
       weaknessType: "Colorless",
-      weaknessDamage: 0,
+      weaknessDamage: 2,
     },
   });
 
-  const onSubmit: SubmitHandler<PokemonCardFormFieldsSchema> = async (data) => {
+  const onSubmit = async (data: PokemonCardFormFieldsSchema) => {
     if (imageFile) {
       const { imageUrl, error } = await uploadImage({
         file: imageFile,
@@ -224,10 +224,15 @@ export const AddCardForm = () => {
             Resistance Type:
           </label>
           <select
-            {...register("resistanceType")}
+            {...register("resistanceType", {
+              setValueAs: (value) => (value === "" ? undefined : value),
+            })}
             className="mt-1 text-lg block w-full rounded-md border border-gray-300 p-3 bg-black"
             style={errors?.resistanceType && { border: "2px solid red" }}
           >
+            <option key={"none"} value={""} className="bg-gray-900">
+              {"-"}
+            </option>
             {Object.values(PokemonType).map((type) => (
               <option key={type} value={type} className="bg-gray-900">
                 {type}
