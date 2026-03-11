@@ -14,6 +14,12 @@ async function PokemonGrid() {
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5 sm:gap-6 md:gap-7 mx-2 my-6">
+      {cards.length === 0 && (
+        <div className="text-xl text-gray-100 text-center mt-24 col-span-full">
+          No cards
+        </div>
+      )}
+
       {cards.map((card) => (
         <div key={card.id} className="relative">
           <Link href={`/pokemon/${card.id}`}>
