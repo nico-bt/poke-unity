@@ -37,7 +37,8 @@ export default async function RootLayout({
           <Header session={session} />
           {children}
         </div>
-        <Toaster />
+
+        <Toaster containerStyle={{ top: 120 }} />
       </body>
     </html>
   );

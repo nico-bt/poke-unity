@@ -27,7 +27,7 @@ function DeleteCardBtn({
       }
 
       if (result.success) {
-        toast("Pokemon deleted successfully", { icon: "🗑️" });
+        toast.success("Pokemon deleted successfully", { icon: "🗑️" });
       }
     });
   };
