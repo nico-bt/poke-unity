@@ -4,9 +4,9 @@ import { verifySession } from "@/lib/session";
 import Image from "next/image";
 import Link from "next/link";
 
-async function PokemonGrid() {
+async function PokemonGrid({ query, type }: { query: string; type: string }) {
   const [cards, session] = await Promise.all([
-    getPokemonCards(),
+    getPokemonCards(query, type),
     verifySession(),
   ]);
 
@@ -28,7 +28,9 @@ async function PokemonGrid() {
               alt={card.name}
               height={742}
               width={532}
-              className="object-cover"
+              className="object-cover rounded-xl"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2YjcyODAiLz48L3N2Zz4="
             />
 
             {!card.image && (
