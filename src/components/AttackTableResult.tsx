@@ -6,18 +6,21 @@ export function AttackTableResult({
   oponent,
 }: {
   pokemon: Pokemon;
-  oponent: Pokemon;
+  oponent: Pokemon | undefined;
 }) {
   // Initial attack
   let attackModified = pokemon.attack;
 
-  if (pokemon.type === oponent.weaknessType && oponent.weaknessDamage != null) {
+  if (
+    pokemon.type === oponent?.weaknessType &&
+    oponent?.weaknessDamage != null
+  ) {
     attackModified = attackModified * oponent.weaknessDamage;
   }
 
   if (
-    pokemon.type === oponent.resistanceType &&
-    oponent.resistanceQuantity != null
+    pokemon.type === oponent?.resistanceType &&
+    oponent?.resistanceQuantity != null
   ) {
     attackModified = attackModified - oponent.resistanceQuantity;
   }
@@ -42,20 +45,26 @@ export function AttackTableResult({
           <tr className="border border-gray-700 text-center">
             <td className="px-4 py-3 border border-gray-700">{pokemon.name}</td>
             <td className="px-4 py-3 border border-gray-700">
-              {oponent.name} ({oponent.hp} HP)
+              {oponent ? `${oponent.name} ${oponent.hp} HP)` : "-"}
             </td>
             <td className="px-4 py-3 border border-gray-700">
               {pokemon.attack}
             </td>
             <td className="px-4 py-3 border border-gray-700">
-              {attackModified}
+              {oponent ? attackModified : ""}
             </td>
             <td className="px-4 py-3 border border-gray-700 flex gap-3 items-center justify-center flex-wrap">
-              {oponent.hp} - {attackModified}
-              {oponent.hp - attackModified <= 0 ? (
-                <CircleCheck className="text-green-500 text-2xl" />
+              {oponent ? (
+                <>
+                  {oponent.hp} - {attackModified}
+                  {oponent.hp - attackModified <= 0 ? (
+                    <CircleCheck className="text-green-500 text-2xl" />
+                  ) : (
+                    <CircleX className="text-red-500 size-8" />
+                  )}
+                </>
               ) : (
-                <CircleX className="text-red-500 size-8" />
+                "-"
               )}
             </td>
           </tr>

@@ -55,9 +55,7 @@ export const VersusGrid = ({
         />
       )}
 
-      {oponent && pokemon && (
-        <AttackTableResult pokemon={pokemon} oponent={oponent} />
-      )}
+      <AttackTableResult pokemon={pokemon} oponent={oponent} />
     </div>
   );
 };
