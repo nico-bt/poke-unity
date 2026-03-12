@@ -4,6 +4,7 @@ import "./globals.css";
 import { verifySession } from "@/lib/session";
 import Header from "@/components/Header";
 import { Toaster } from "react-hot-toast";
+import WelcomeModal from "@/components/WelcomeMsg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,8 @@ export default async function RootLayout({
         </div>
 
         <Toaster containerStyle={{ top: 120 }} />
+
+        <WelcomeModal />
       </body>
     </html>
   );
