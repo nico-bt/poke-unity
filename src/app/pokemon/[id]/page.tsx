@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { findPokemonCardById, getPokemonCards } from "@/lib/Pokemon";
 import { VersusGrid } from "@/components/VersusGrid";
+import { Suspense } from "react";
 
 export default async function PokemonPage({
   params,
@@ -9,6 +10,14 @@ export default async function PokemonPage({
 }) {
   const { id } = await params;
 
+  return (
+    <Suspense fallback={null}>
+      <VersusGridWrapper id={id} />
+    </Suspense>
+  );
+}
+
+async function VersusGridWrapper({ id }: { id: string }) {
   const [pokemon, allPokemons] = await Promise.all([
     findPokemonCardById(Number(id)),
     getPokemonCards(),

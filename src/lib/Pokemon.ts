@@ -1,12 +1,13 @@
 import { PokemonCardFormFieldsSchema } from "@/utils/zodSchema";
 import prisma from "./prisma";
 import { PokemonType } from "@/db/generated/prisma/enums";
+import { unstable_cache as cache } from "next/cache";
 
 export async function createPokemonCard(data: PokemonCardFormFieldsSchema) {
   return prisma.pokemon.create({ data });
 }
 
-export async function getPokemonCards(query?: string, type?: string) {
+export const getPokemonCards = cache(async (query?: string, type?: string) => {
   // if type directly in url
   const validType = Object.values(PokemonType).includes(type as PokemonType)
     ? (type as PokemonType)
@@ -21,7 +22,7 @@ export async function getPokemonCards(query?: string, type?: string) {
     orderBy: { created_at: "desc" },
     where,
   });
-}
+});
 
 export async function findPokemonCardById(id: number) {
   return prisma.pokemon.findUnique({ where: { id: Number(id) } });
