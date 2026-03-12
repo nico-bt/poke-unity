@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## CookUnity challenge
 
-## Getting Started
+Live: 🔗 https://poke-unity.vercel.app/
 
-First, run the development server:
+Techs used:
+- Nextjs
+- DB: Prisma ORM + Supabase
+- Supabse storage: Bucket for uploading images
+- Typescript
+- Tailwind
+- React hook form: client-side validation for add poke form
+- zod: server-side validation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+I followed the "Next way" of using server actions and getting direct access to db via Server Components.  
+I did not create a separate api to access the data.  
+
+<br>
+
+[Original Challenge](Challenge.md)
+
+<br>
+
+
+## Public routes
+You can browse and select a card:
+- /
+- pokemon/[id]
+- /login
+
+## Protected routes
+  As an admin you can also add and delete cards
+  - /admin
+
+<br>  
+
+## Notes for local setup 
+I used Supabase instead of a local Docker database. 
+This cloud instance can act as a shared live development/staging environment.  
+  
+After cloning the repo, you’ll need to create a `.env` file with your database access keys.    
+If we were using a shared staging environment, this `.env` file could be provided privately via ClickUp, Slack, or another secure channel.  
+Or send me a messagge if you want to run locally.
+  
+### Example `.env` file
+
+> ⚠️ Replace the values below with the project credentials.
+
+```env
+SESSION_SECRET="thisIsJWTforSigninTheTokenForAdminPasswordsInDatabase"
+
+DATABASE_URL="postgresql://yourURL"
+DIRECT_URL="for migrations"
+
+NEXT_PUBLIC_SUPABASE_URL="url"
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY="forUploadingImages"
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
