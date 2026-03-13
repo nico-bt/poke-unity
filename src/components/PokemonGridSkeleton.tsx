@@ -1,6 +1,6 @@
 export function PokemonGridSkeleton() {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5 sm:gap-6 md:gap-7 mx-2 my-6">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5 sm:gap-6 md:gap-7 mx-2 py-6 px-4">
       {Array(4)
         .fill(0)
         .map((_, i) => (
