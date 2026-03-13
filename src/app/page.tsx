@@ -17,7 +17,7 @@ export default async function Home(props: { searchParams: SearchParams }) {
     <main className="w-full">
       <Searchbar />
 
-      <Suspense key={query} fallback={<PokemonGridSkeleton />}>
+      <Suspense key={query + type} fallback={<PokemonGridSkeleton />}>
         <PokemonGrid query={query} type={type} />
       </Suspense>
     </main>
