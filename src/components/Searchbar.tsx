@@ -50,7 +50,7 @@ export default function Searchbar() {
 
       {/* TYPE SELECT */}
       <select
-        className="bg-white border rounded-xl px-3 shadow text-gray-500"
+        className="bg-white border rounded-xl px-3 shadow text-black"
         defaultValue={searchParams?.get("type") || ""}
         onChange={(e) => updateParam("type", e.target.value || null)}
       >

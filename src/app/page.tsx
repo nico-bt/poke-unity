@@ -14,7 +14,7 @@ export default async function Home(props: { searchParams: SearchParams }) {
   const type = searchParams?.type || "";
 
   return (
-    <main className="min-h-screen w-full">
+    <main className="w-full">
       <Searchbar />
 
       <Suspense key={query} fallback={<PokemonGridSkeleton />}>

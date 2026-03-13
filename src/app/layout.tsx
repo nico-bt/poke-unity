@@ -34,7 +34,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased root`}
       >
-        <div className="mx-auto max-w-[1200px]">
+        <div className="mx-auto max-w-[1220px] bg-black min-h-screen">
           <Header session={session} />
           {children}
         </div>

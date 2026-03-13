@@ -23,7 +23,7 @@ export const VersusGrid = ({
   );
 
   return (
-    <div className="grid grid-cols-[1fr_45px_1fr] mt-4 gap-2 px-4 mb-2 w-full max-w-260 mx-auto">
+    <div className="grid grid-cols-[1fr_45px_1fr] mt-4 gap-2 px-4 pb-3 w-full max-w-260 mx-auto">
       {/* Row 1 */}
       <div />
       <div />

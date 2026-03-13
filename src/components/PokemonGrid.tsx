@@ -13,7 +13,7 @@ async function PokemonGrid({ query, type }: { query: string; type: string }) {
   const { isAdmin } = session;
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5 sm:gap-6 md:gap-7 mx-2 my-6">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-5 sm:gap-6 md:gap-7 mx-2 py-6 px-4">
       {cards.length === 0 && (
         <div className="text-xl text-gray-100 text-center mt-24 col-span-full">
           No cards
