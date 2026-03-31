@@ -6,17 +6,9 @@ export default function WelcomeModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisited");
-    if (!hasVisited) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsOpen(true);
-    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsOpen(true);
   }, []);
-
-  const handleClose = () => {
-    localStorage.setItem("hasVisited", "true");
-    setIsOpen(false);
-  };
 
   if (!isOpen) return null;
 
@@ -45,7 +37,7 @@ export default function WelcomeModal() {
         </div>
 
         <button
-          onClick={handleClose}
+          onClick={() => setIsOpen(false)}
           className="w-full cursor-pointer bg-black text-white py-2 rounded-xl hover:bg-gray-800 transition-colors"
         >
           Got it
